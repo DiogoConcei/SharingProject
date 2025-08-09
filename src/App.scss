@@ -1,0 +1,39 @@
+@use "./styles/variables" as *;
+
+.dropArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column nowrap;
+  height: 100vh;
+  gap: $spacing-2;
+
+  label {
+    font-size: $font-lg;
+    color: $snow;
+    cursor: pointer;
+    font-weight: bold;
+    order: 1;
+
+    .inputFile {
+      display: none;
+    }
+  }
+
+  .fileZone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $spacing-2;
+    border: 1px solid $border-collor;
+    border-radius: $radius-md;
+
+    .fileImage {
+      width: 30vw;
+      height: 40vh;
+      object-fit: contain;
+      order: 2;
+      padding: $spacing-3;
+    }
+  }
+}
