@@ -1,11 +1,26 @@
 import QRCode from "react-qr-code";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
 
 function App() {
   const [qrValue, setQrValue] = useState<string>();
   const [imgUrl, setImgUrl] = useState<string>();
+
+  useEffect(() => {
+    async function fetchFiles() {
+      try {
+        const response = await axios.get(
+          "http://localhost:3001/api/list-files"
+        );
+        console.log(response.data);
+      } catch (e) {
+        console.log("Erro ao buscar arquivos");
+      }
+    }
+
+    fetchFiles(); // <- chamada da função
+  }, []); // array de dependências vazio, sempre consistente
 
   const handleImage = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event?.target.files?.[0];
